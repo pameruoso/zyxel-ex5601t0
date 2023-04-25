@@ -1,0 +1,9 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+
+#change router root password to device serial number
+pwd=$(fw_printenv | grep SerialNumber= | awk '{print substr($0,14)}')
+echo root:$pwd | chpasswd
+
+exit 0
